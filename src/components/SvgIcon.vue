@@ -24,7 +24,7 @@ export default {
     name: {
       type: String,
       validator (val) {
-        if (/^\#.+/.test(val)) {
+        if (/^#.+/.test(val)) {
           console.warn('[SvgIcon] name must be start without `#`')
           return false
         }
@@ -72,7 +72,7 @@ export default {
 
   methods: {
     numeric (val) {
-      return typeof val === 'string' ? Number.parseInt(val, 10) : val 
+      return typeof val === 'string' ? Number.parseInt(val, 10) : val
     }
   }
 }
@@ -90,10 +90,10 @@ export default {
   >
     <use :xlink:href="iconName"></use>
   </svg>
-  <img 
-    v-else-if="path" 
+  <img
+    v-else-if="path"
     :style="imgStyle"
-    :src="path" 
+    :src="path"
     :alt="alt"
   />
 </template>
@@ -103,5 +103,3 @@ export default {
     fill: currentColor;
   }
 </style>
-
-

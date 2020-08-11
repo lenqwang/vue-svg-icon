@@ -15,6 +15,22 @@ export default {
       color: '',
       size: 12
     }
+  },
+
+  computed: {
+    realSize () {
+      return this.size + 'px'
+    }
+  },
+
+  methods: {
+    async loadIcon (systemName = 'system') {
+      await import(`@/icons/${systemName}/index`)
+    },
+
+    getIconName (iconName, systemName = 'system') {
+      return systemName ? `${systemName}/${iconName}` : iconName
+    }
   }
 }
 </script>
@@ -36,7 +52,7 @@ export default {
       </div>
       <div :class="$style.Icon" :style="{ color }">
         <!-- specify icon id by import svg icon asset -->
-        <svg-icon 
+        <svg-icon
           :name="icons.role.id"
           :viewBox="icons.role.viewBox"
           :width="size"
@@ -44,7 +60,7 @@ export default {
         ></svg-icon>
 
         <!-- only specify icon name -->
-        <svg-icon 
+        <svg-icon
           name="table"
           :width="size"
           :height="size"
@@ -56,13 +72,23 @@ export default {
     <div>
       <h1>Svg Image Preview</h1>
       <div>
-        <svg-icon 
+        <svg-icon
           :path="images.roleImage"
           :width="size"
           :height="size"
           alt="role"
         ></svg-icon>
       </div>
+    </div>
+
+    <!-- from vue svg-icon -->
+    <h1>From vue-svgicon package</h1>
+    <button @click="loadIcon()">加载icon图标</button>
+    <div :style="{ color }">
+      <svg-icons class="svg-icons" :name="getIconName('editor-bgcolor')" color="currentColor" :width="realSize" :height="realSize"></svg-icons>
+      <svg-icons class="svg-icons" :name="getIconName('editor-sort')" color="currentColor" :width="realSize" :height="realSize"></svg-icons>
+      <svg-icons class="svg-icons" :name="getIconName('editor-table')" color="currentColor" :width="realSize" :height="realSize"></svg-icons>
+      <svg-icons class="svg-icons" :name="getIconName('editor-disconnect')" color="currentColor" :width="realSize" :height="realSize"></svg-icons>
     </div>
   </div>
 </template>
@@ -79,5 +105,13 @@ export default {
 .Label {
   display: block;
   margin-bottom: 10px;
+}
+
+:global {
+  .svg-icons {
+    &:hover {
+      color: blue;
+    }
+  }
 }
 </style>

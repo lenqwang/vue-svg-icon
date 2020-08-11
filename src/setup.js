@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import SvgIcon from '@/components/SvgIcon'
+import VueSvgIcon from 'vue-svgicon'
 
 export default function setup () {
   const components = [
@@ -18,4 +19,11 @@ export default function setup () {
   const assetsRule = require.context('./assets/svg', true, /\.svg$/)
 
   importAll(assetsRule)
+
+  // install VueSvgIcon
+  Vue.use(VueSvgIcon, {
+    tagName: 'svg-icons',
+    defaultWidth: '2em',
+    defaultHeight: '2em'
+  })
 }
