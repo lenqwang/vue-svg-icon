@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "nps",
+    "build": "nps build",
+    "lint": "nps lint",
+    "svg": "nps svg"
   },
   "dependencies": {
     "core-js": "^2.6.5",
@@ -19,10 +20,13 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^7.1.0",
+    "nps": "^5.10.0",
+    "nps-utils": "^1.7.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
     "svg-sprite-loader": "^4.1.6",
     "svgo-loader": "^2.2.0",
+    "vue-svgicon": "^3.2.8",
     "vue-template-compiler": "^2.5.21"
   }
 }
